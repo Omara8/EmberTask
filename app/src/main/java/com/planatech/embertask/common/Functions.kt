@@ -6,10 +6,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.RequestOptions
+import com.planatech.embertask.R
 
 @BindingAdapter("imageUrl")
 fun loadImage(imageView: ImageView, imageUrl: String?) {
-    Glide.with(imageView.context).load(imageUrl).apply(RequestOptions().diskCacheStrategy(DiskCacheStrategy.RESOURCE)).into(imageView)
+    Glide.with(imageView.context).load(imageUrl).apply(RequestOptions().placeholder(R.drawable.placeholder).diskCacheStrategy(DiskCacheStrategy.RESOURCE)).into(imageView)
 }
 
 @BindingAdapter(value = ["setAdapter"])

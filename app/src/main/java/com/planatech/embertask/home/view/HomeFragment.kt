@@ -33,6 +33,7 @@ class HomeFragment: Fragment() {
             it.let{
                 articleAdapter.submitList(it)
                 articleAdapter.notifyDataSetChanged()
+                binding?.adapter = articleAdapter
             }
         })
     }

@@ -21,6 +21,7 @@
             android:layout_width="@dimen/_64dp"
             android:layout_height="@dimen/_64dp"
             android:layout_margin="@dimen/_16dp"
+            android:scaleType="centerCrop"
             app:imageUrl="@{article.urlToImage}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
