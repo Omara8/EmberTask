@@ -5,8 +5,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.planatech.embertask.BuildConfig
-import com.planatech.embertask.home.repository.HomeRepository
 import com.planatech.embertask.home.model.Article
+import com.planatech.embertask.home.repository.HomeRepository
 
 class HomeViewModel : ViewModel() {
 
@@ -23,7 +23,7 @@ class HomeViewModel : ViewModel() {
     fun loadArticles() {
         homeRepository.loadArticles("us", BuildConfig.API_KEY, {
             _articleList?.postValue(it?.articles)
-        },{
+        }, {
             Log.e("ViewModel", "loading articles failed")
         })
     }

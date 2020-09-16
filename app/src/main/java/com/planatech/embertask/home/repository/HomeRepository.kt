@@ -11,9 +11,17 @@ class HomeRepository {
     private val retrofit = RetrofitBuilder.getRetrofit()
     private val client = retrofit.create(HomeAPI::class.java)
 
-    fun loadArticles(country: String, apiKey: String, successCallback: (LoadArticlesResponse?) -> Unit, failureCallback: () -> Unit) {
+    fun loadArticles(
+        country: String,
+        apiKey: String,
+        successCallback: (LoadArticlesResponse?) -> Unit,
+        failureCallback: () -> Unit
+    ) {
         client.loadArticles(country, apiKey).enqueue(object : Callback<LoadArticlesResponse> {
-            override fun onResponse(call: Call<LoadArticlesResponse>, response: Response<LoadArticlesResponse>) {
+            override fun onResponse(
+                call: Call<LoadArticlesResponse>,
+                response: Response<LoadArticlesResponse>
+            ) {
                 successCallback(response.body())
             }
 

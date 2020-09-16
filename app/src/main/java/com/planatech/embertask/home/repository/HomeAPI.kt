@@ -8,6 +8,9 @@ import retrofit2.http.Query
 interface HomeAPI {
 
     @GET("top-headlines")
-    fun loadArticles(@Query("country") country: String, @Query("apiKey") apiKey: String): Call<LoadArticlesResponse>
+    fun loadArticles(
+        @Query("country") country: String,
+        @Query("apiKey") apiKey: String
+    ): Call<LoadArticlesResponse>
 
 }

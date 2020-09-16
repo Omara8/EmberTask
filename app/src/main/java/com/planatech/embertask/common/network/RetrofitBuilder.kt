@@ -25,7 +25,9 @@ class RetrofitBuilder {
         }
 
         private fun getRetroFit(httpClient: OkHttpClient.Builder): Retrofit {
-            return Retrofit.Builder().baseUrl(baseUrl).addConverterFactory(MoshiConverterFactory.create()).client(httpClient.build()).build()
+            return Retrofit.Builder().baseUrl(baseUrl)
+                .addConverterFactory(MoshiConverterFactory.create()).client(httpClient.build())
+                .build()
         }
 
         private fun getHttpClientBuilder(): OkHttpClient.Builder {

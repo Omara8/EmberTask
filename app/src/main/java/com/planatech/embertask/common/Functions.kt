@@ -10,7 +10,10 @@ import com.planatech.embertask.R
 
 @BindingAdapter("imageUrl")
 fun loadImage(imageView: ImageView, imageUrl: String?) {
-    Glide.with(imageView.context).load(imageUrl).apply(RequestOptions().placeholder(R.drawable.placeholder).diskCacheStrategy(DiskCacheStrategy.RESOURCE)).into(imageView)
+    Glide.with(imageView.context).load(imageUrl).apply(
+        RequestOptions().placeholder(R.drawable.placeholder)
+            .diskCacheStrategy(DiskCacheStrategy.RESOURCE)
+    ).into(imageView)
 }
 
 @BindingAdapter(value = ["setAdapter"])
