@@ -2,6 +2,7 @@ package com.planatech.embertask.home.view
 
 import android.os.Bundle
 import android.view.*
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -30,8 +31,8 @@ class HomeFragment : Fragment() {
     ): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false)
         loadViewModel()
+        handleActionBar()
         navController = findNavController()
-        setHasOptionsMenu(true)
         return binding?.root
     }
 
@@ -87,6 +88,15 @@ class HomeFragment : Fragment() {
             }
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    private fun handleActionBar() {
+        requireActivity().let {
+            setHasOptionsMenu(true)
+            (it as AppCompatActivity).supportActionBar?.title =
+                resources.getString(R.string.app_name)
+            (it as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(false)
+        }
     }
 
 }

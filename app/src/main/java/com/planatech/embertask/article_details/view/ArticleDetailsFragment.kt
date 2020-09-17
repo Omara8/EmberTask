@@ -2,17 +2,21 @@ package com.planatech.embertask.article_details.view
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.NavController
+import androidx.navigation.fragment.findNavController
 import com.planatech.embertask.R
 import com.planatech.embertask.article_details.viewmodel.ArticleDetailsViewModel
 import com.planatech.embertask.article_details.viewmodel.ArticleDetailsViewModelFactory
 import com.planatech.embertask.common.*
 import com.planatech.embertask.databinding.FragmentArticleDetailsBinding
+
 
 class ArticleDetailsFragment : Fragment() {
 
@@ -24,6 +28,7 @@ class ArticleDetailsFragment : Fragment() {
     private var articleSourceUrl: String? = null
     private var binding: FragmentArticleDetailsBinding? = null
     private var articleDetailsViewModel: ArticleDetailsViewModel? = null
+    private var navController: NavController? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,6 +49,8 @@ class ArticleDetailsFragment : Fragment() {
     ): View? {
         binding =
             DataBindingUtil.inflate(inflater, R.layout.fragment_article_details, container, false)
+        setHasOptionsMenu(true)
+        navController = findNavController()
         return binding?.root
     }
 
@@ -66,6 +73,17 @@ class ArticleDetailsFragment : Fragment() {
         requireActivity().let {
             (it as AppCompatActivity).supportActionBar?.title =
                 articleDetailsViewModel?.articleSourceName
+            it.supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            android.R.id.home -> {
+                navController?.navigateUp()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
         }
     }
 

@@ -2,13 +2,13 @@ package com.planatech.embertask.common
 
 import android.widget.ArrayAdapter
 import android.widget.ImageView
-import android.widget.Spinner
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.RequestOptions
+import com.google.android.material.textfield.MaterialAutoCompleteTextView
 import com.planatech.embertask.R
 import java.text.SimpleDateFormat
 
@@ -36,8 +36,8 @@ fun bindServerDate(textView: TextView, date: String?) {
 }
 
 @BindingAdapter("setSpinnerAdapter")
-fun Spinner.bindAdapter(adapter: ArrayAdapter<*>?) {
+fun MaterialAutoCompleteTextView.bindAdapter(adapter: ArrayAdapter<*>?) {
     this.run {
-        this.adapter = adapter
+        this.setAdapter(adapter)
     }
 }

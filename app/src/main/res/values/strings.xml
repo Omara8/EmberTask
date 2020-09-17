@@ -2,6 +2,8 @@
     <string name="app_name">EmberTask</string>
     <string name="filter">Filter</string>
     <string name="cancel">Cancel</string>
+    <string name="country">Country</string>
+    <string name="source">Source</string>
     <string-array name="countries_array">
         <item>ar</item>
         <item>au</item>
