@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.planatech.embertask.home.view.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_homeFragment_to_articleDetailsFragment"
+            app:destination="@id/articleDetailsFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim">
+            <argument
+                android:name="articleTitle"
+                app:argType="string" />
+            <argument
+                android:name="articleContent"
+                app:argType="string" />
+            <argument
+                android:name="articleAuthor"
+                app:argType="string" />
+            <argument
+                android:name="articleImageUrl"
+                app:argType="string" />
+            <argument
+                android:name="articleSourceName"
+                app:argType="string" />
+            <argument
+                android:name="articleSourceUrl"
+                app:argType="string" />
+        </action>
+    </fragment>
+
+    <fragment
+        android:id="@+id/articleDetailsFragment"
+        android:name="com.planatech.embertask.article_details.view.ArticleDetailsFragment"
+        android:label="fragment_article_details"
+        tools:layout="@layout/fragment_article_details" />
+
+</navigation>
