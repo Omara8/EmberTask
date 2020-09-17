@@ -36,7 +36,7 @@ fun bindServerDate(textView: TextView, date: String?) {
 }
 
 @BindingAdapter("setSpinnerAdapter")
-fun Spinner.bindAdapter(adapter: ArrayAdapter<*>?){
+fun Spinner.bindAdapter(adapter: ArrayAdapter<*>?) {
     this.run {
         this.adapter = adapter
     }

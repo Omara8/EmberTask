@@ -25,7 +25,7 @@ class HomeViewModel : ViewModel() {
 
     val sourcesList: LiveData<List<Source>>
         get() {
-            if(_sourcesList == null)
+            if (_sourcesList == null)
                 _sourcesList = MutableLiveData()
             return _sourcesList!!
         }
@@ -38,10 +38,10 @@ class HomeViewModel : ViewModel() {
         })
     }
 
-    fun loadSources(){
+    fun loadSources() {
         homeRepository.loadSources(apiKey, {
             _sourcesList?.postValue(it?.sources)
-        },{
+        }, {
             Log.e("ViewModel", "loading sources failed")
         })
     }

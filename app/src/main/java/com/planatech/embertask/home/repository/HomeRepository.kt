@@ -19,23 +19,26 @@ class HomeRepository {
         successCallback: (LoadArticlesResponse?) -> Unit,
         failureCallback: () -> Unit
     ) {
-        client.loadArticles(country, source, apiKey).enqueue(object : Callback<LoadArticlesResponse> {
-            override fun onResponse(
-                call: Call<LoadArticlesResponse>,
-                response: Response<LoadArticlesResponse>
-            ) {
-                successCallback(response.body())
-            }
+        client.loadArticles(country, source, apiKey)
+            .enqueue(object : Callback<LoadArticlesResponse> {
+                override fun onResponse(
+                    call: Call<LoadArticlesResponse>,
+                    response: Response<LoadArticlesResponse>
+                ) {
+                    successCallback(response.body())
+                }
 
-            override fun onFailure(call: Call<LoadArticlesResponse>, t: Throwable) {
-                failureCallback()
-            }
-        })
+                override fun onFailure(call: Call<LoadArticlesResponse>, t: Throwable) {
+                    failureCallback()
+                }
+            })
     }
 
-    fun loadSources(apiKey: String,
-                    successCallback: (LoadSourcesResponse?) -> Unit,
-                    failureCallback: () -> Unit){
+    fun loadSources(
+        apiKey: String,
+        successCallback: (LoadSourcesResponse?) -> Unit,
+        failureCallback: () -> Unit
+    ) {
         client.loadSources(apiKey).enqueue(object : Callback<LoadSourcesResponse> {
             override fun onResponse(
                 call: Call<LoadSourcesResponse>,

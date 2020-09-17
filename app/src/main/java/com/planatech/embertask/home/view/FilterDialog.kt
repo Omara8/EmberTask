@@ -37,12 +37,16 @@ class FilterDialog(
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        for(source in sources)
+        for (source in sources)
             sourcesList?.add(source.name)
 
-            val sourcesAdapter =
-                ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, sourcesList as MutableList<String>)
-            binding?.sourcesAdapter = sourcesAdapter
+        val sourcesAdapter =
+            ArrayAdapter(
+                requireContext(),
+                android.R.layout.simple_spinner_item,
+                sourcesList as MutableList<String>
+            )
+        binding?.sourcesAdapter = sourcesAdapter
 
         val countriesAdapter = ArrayAdapter.createFromResource(
             requireContext(),
