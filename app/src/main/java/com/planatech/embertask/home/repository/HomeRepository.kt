@@ -2,6 +2,7 @@ package com.planatech.embertask.home.repository
 
 import com.planatech.embertask.common.network.RetrofitBuilder
 import com.planatech.embertask.home.model.LoadArticlesResponse
+import com.planatech.embertask.home.model.LoadSourcesResponse
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -12,12 +13,13 @@ class HomeRepository {
     private val client = retrofit.create(HomeAPI::class.java)
 
     fun loadArticles(
-        country: String,
+        country: String?,
+        source: String?,
         apiKey: String,
         successCallback: (LoadArticlesResponse?) -> Unit,
         failureCallback: () -> Unit
     ) {
-        client.loadArticles(country, apiKey).enqueue(object : Callback<LoadArticlesResponse> {
+        client.loadArticles(country, source, apiKey).enqueue(object : Callback<LoadArticlesResponse> {
             override fun onResponse(
                 call: Call<LoadArticlesResponse>,
                 response: Response<LoadArticlesResponse>
@@ -31,4 +33,20 @@ class HomeRepository {
         })
     }
 
+    fun loadSources(apiKey: String,
+                    successCallback: (LoadSourcesResponse?) -> Unit,
+                    failureCallback: () -> Unit){
+        client.loadSources(apiKey).enqueue(object : Callback<LoadSourcesResponse> {
+            override fun onResponse(
+                call: Call<LoadSourcesResponse>,
+                response: Response<LoadSourcesResponse>
+            ) {
+                successCallback(response.body())
+            }
+
+            override fun onFailure(call: Call<LoadSourcesResponse>, t: Throwable) {
+                failureCallback()
+            }
+        })
+    }
 }

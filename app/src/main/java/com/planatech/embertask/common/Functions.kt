@@ -1,12 +1,16 @@
 package com.planatech.embertask.common
 
+import android.widget.ArrayAdapter
 import android.widget.ImageView
+import android.widget.Spinner
+import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.RequestOptions
 import com.planatech.embertask.R
+import java.text.SimpleDateFormat
 
 @BindingAdapter("imageUrl")
 fun loadImage(imageView: ImageView, imageUrl: String?) {
@@ -16,10 +20,24 @@ fun loadImage(imageView: ImageView, imageUrl: String?) {
     ).into(imageView)
 }
 
-@BindingAdapter(value = ["setAdapter"])
+@BindingAdapter("setAdapter")
 fun RecyclerView.bindRecyclerViewAdapter(adapter: RecyclerView.Adapter<*>?) {
     this.run {
         this.setHasFixedSize(true)
+        this.adapter = adapter
+    }
+}
+
+@BindingAdapter("bindServerDate")
+fun bindServerDate(textView: TextView, date: String?) {
+    val fromServer = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'")
+    val myFormat = SimpleDateFormat("dd, MMMM yy")
+    textView.text = myFormat.format(fromServer.parse(date)).toString()
+}
+
+@BindingAdapter("setSpinnerAdapter")
+fun Spinner.bindAdapter(adapter: ArrayAdapter<*>?){
+    this.run {
         this.adapter = adapter
     }
 }
