@@ -64,16 +64,21 @@ class FilterDialog(
     }
 
     private fun filterClicked() {
-        var country: String? = "us"
-        var source = ""
+        var country: String?
+        var source: String
         if (countries_toggle?.isChecked == true) {
-            country = countries_spinner?.selectedItem.toString()
+            source = ""
+            country = countries_text_view?.text.toString()
+            searchWithFilters(country, source)
         } else if (sources_toggle?.isChecked == true) {
-            val selectedSource: String = sources_spinner?.selectedItem.toString()
-            source = sources[sourcesList?.indexOf(selectedSource)!!].id
+            val selectedSourcePosition = sourcesList?.indexOf(sources_text_view?.text.toString())
+            source = sources[selectedSourcePosition!!].id
             country = null
+            searchWithFilters(country, source)
         }
+    }
 
+    private fun searchWithFilters(country: String?, source: String) {
         filterCallback(country, source)
         dismiss()
     }
